@@ -1,31 +1,4 @@
-<?php
 
-require_once('db.php');
-
-  if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $err = array();
-    $user = R::findOne("users", 'login = ?', array($username));
-    if ($user) {
-      if (password_verify($_POST['password'], $user->password)) {
-        $_SESSION['logged_user'] = $user;
-        echo '<div style="color: #2715f9;text-align: center;">Вы авторизованы!</div><hr>';
-      }
-      else {
-        $err[] = 'Неверно введен пароль!';
-      }
-    }
-    else {
-      $err[] = 'Пользователь с таким логином не найден!';
-    }
-
-    if (!empty($err)) {
-      echo '<div style="color: #fc0808;text-align: center;">'.array_shift($err).'</div><hr>';
-    }
-  }
- ?>
 
 
 <!DOCTYPE html>
