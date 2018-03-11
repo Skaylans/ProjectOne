@@ -7,5 +7,5 @@ $pass = "Qwerty123456";
 
 R::setup($dsn, $login, $pass);
 
-session_start();
+
  ?>
