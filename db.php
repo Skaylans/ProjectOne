@@ -1,8 +1,8 @@
 <?php
 require_once('rb.php');
-$dsn = 'mysql:host=localhost;dbname=insurance';
-$login = 'root';
-$pass = null;
+$dsn = "sqlsrv:server = tcp:safelife.database.windows.net,1433; Database = insurance";
+$login = "Romanow";
+$pass = "Qwerty123456";
 try {
   R::setup($dsn, $login, $pass);
 }
