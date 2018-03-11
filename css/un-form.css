@@ -1,0 +1,69 @@
+
+@import URL('https://fonts.googleapis.com/css?family=Roboto+Slab|Suez+One');
+
+body {
+  background: url("/img/cassie-matias-558564-unsplash.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
+.content {
+  width: 600px;
+  height: 400px;
+  background-color: rgba(218, 218, 218, 0.5);
+  margin: 250px auto 0 auto;
+  text-align: center;
+  border-radius: 20px 120px 20px 120px;
+}
+
+form .insurer-box {
+  font-size: 2.2em;
+  font-family: 'Roboto Slab', serif;
+  padding: 42px;
+  color: white;
+}
+
+form .select-insurer {
+  padding: 30px 10px;
+  margin: 5px auto 20px auto;
+  font-size: 30px;
+  color: #2c536c;
+  border: none;
+  cursor: pointer;
+}
+
+form .dws-insurer {
+  border-radius: 75px;
+  border: 4px solid #c4c4c4;
+  font-size: 0.8em;
+  padding: 10px 5%;
+  margin-bottom: 10px;
+  background-color: rgba(242, 153, 109, 0.29);
+  width: 75%;
+  font-family: 'Roboto Slab', serif;
+  color: #2c536c;
+}
+
+
+form .btn {
+  text-align: center;
+  padding: 25px 40px;
+  margin: 50px 0 20px 0;
+  font-size: 18px;
+  color: #e3bf00;
+  background-color: rgba(0, 5, 13, 0.66);
+  border: 5px solid #e3bf00;
+  cursor: pointer;
+  border-radius: 100px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.btn:hover {
+  transition: all 0.8s;
+  background: #fff;
+  color: #2c536c;
+  border-radius: 50px;
+  border: 5px solid #2c536c;
+}

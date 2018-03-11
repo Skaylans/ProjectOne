@@ -1,0 +1,75 @@
+@import URL('https://fonts.googleapis.com/css?family=Roboto+Slab|Suez+One');
+
+body {
+background: url("/img/luka.jpg") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+
+form {
+  width: 1000px;
+  max-height: 5000px;
+  background-color: rgba(51, 123, 218, 0.45);
+  padding: 20px;
+  margin: 250px -550px 0 auto;
+  font-family: 'Roboto Slab', serif;
+  border-radius: 22px;
+}
+
+
+legend>h1 {
+  color: #e6ba00;
+  text-align: center;
+}
+
+legend>h3 {
+  color: #000000;
+}
+
+label {
+  color: white;
+  font-size: 1.4em;
+}
+
+input[type="text"] {
+  width: 300px;
+  height: 50px;
+  font-size: 22px;
+  margin-bottom: 25px;
+  border-radius: 14px;
+  padding-left: 40px;
+  background-color: rgba(218, 35, 57, 0.52);
+  border : 2px solid white;
+  color: white;
+}
+
+
+textarea {
+  background-color: rgba(218, 35, 57, 0.52);
+  border : 3px solid white;
+  color: white;
+  border-radius: 12px;
+}
+
+form .btn {
+  text-align: center;
+  padding: 25px 40px;
+  margin: 50px 0 20px 200px;
+  font-size: 18px;
+  color: rgb(9, 9, 9);
+  background-color: rgba(245, 245, 242, 0.52);
+  border: 5px solid white;
+  cursor: pointer;
+  border-radius: 100px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.btn:hover {
+  transition: all 0.8s;
+  background: #fff;
+  color: #2c536c;
+  border-radius: 50px;
+  border: 5px solid #2c536c;
+}

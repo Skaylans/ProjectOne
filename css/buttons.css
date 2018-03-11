@@ -1,0 +1,60 @@
+
+@import URL('https://fonts.googleapis.com/css?family=Roboto+Slab|Suez+One');
+
+body {
+  background: url("/img/hal-ozart-91934-unsplash.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
+
+.prime-box {
+  width: 450px;
+  height: 450px;
+  background-color: rgba(208, 208, 208, 0.44);
+  margin: 250px auto 0 auto;
+  text-align: center;
+  border-radius: 300px 300px 300px 300px;
+}
+
+#reg_auth {
+  padding: 150px 50px;
+  margin: 5px auto 20px auto;
+  font-size: 30px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#reg_auth>a {
+  color: white;
+}
+
+.btn:hover {
+  border-bottom: 2px solid rgba(17, 209, 36, 0.38);
+  margin-top: 7px;
+}
+
+.btn:active {
+  border-bottom: 0;
+  margin-top: 9px;
+}
+
+.btn {
+  width: 300px;
+  height: 50px;
+  text-align: center;
+  float: right;
+  margin-right: 3%;
+  margin-top: 5px;
+  border-radius: 15px;
+  padding: 5px 9px;
+  font-size: 1.2em;
+  background-color: rgba(26, 31, 21, 0.49);
+  text-shadow: #e6ba00 0 0 2px;
+  border-bottom: 4px solid rgba(17, 209, 36, 0.38);
+  color: white;
+  font-family: 'Roboto Slab', serif;
+}
