@@ -39,6 +39,7 @@ if (isset($_POST['register'])) {
         }
         else {
           echo '<div style = "color: red;">Пользователь с таким логином уже существует!</div><hr>';
+        }
     }
     else {
       echo '<div style = "color: red; text-align: center">'.array_shift($err).'</div><hr>';
