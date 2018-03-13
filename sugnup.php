@@ -14,34 +14,37 @@ if (isset($_POST['register'])) {
       $err[] = 'Поле логин незаполенно!';
     }
     else if (trim($email) == '') {
-      $err[] = "Поле email незаполненно!";
+      $err[] = 'Поле email незаполненно!';
     }
     else if ($password == '') {
-      $err[] = "Поле пароль незаполненно!";
+      $err[] = 'Поле пароль незаполненно!';
     }
     else if ($password != $password_2) {
-      $err[] = "Пароль введен не верно!";
-    }
-    else if (R::count('users', "login = ?", array($username)) > 0)  {
-      $err[] = "Пользователь с таким логином уже существует!";
-    }
-    else if (R::count('users', "email = ?", array($email)) > 0)  {
-      $err[] = "Пользователь с таким Email уже существует!";
+      $err[] = 'Пароль введен не верно!';
     }
 
-    if (empty($err)) {
-      $user = R::dispense('users');
-      $user->login = $username;
-      $user->email = $email;
-      $user->password = password_hash($password, PASSWORD_DEFAULT);
-      R::store($user);
-
-      echo '<div style="color: #2715f9;text-align: center;">Вы зарегистрированны!</div><hr>';
+    if(empty($err)) {
+        $sql_select = "SELECT * FROM users WHERE login = '$username'";
+        $stmt = $conn->query($sql_select);
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+      if(count($data > 0) {
+            $sql_insert = "INSERT INTO users (login, email, password) VALUES (?,?,?)";
+            $stmt = $conn->prepare($sql_insert);
+            $stmt->bindValue(1, $username);
+            $stmt->bindValue(2, $email);
+            $stmt->bindValue(3, $password);
+            $stmt->execute();
+            echo '<div style= "color: white;">Вы зарегистрированны!</div><hr>';
+        }
+        else {
+          echo '<div style = "color: red;">Пользователь с таким логином уже существует!</div><hr>';
     }
     else {
-       echo '<div style="color: #fc0808;text-align: center;">'.array_shift($err).'</div><hr>';
+      echo '<div style = "color: red; text-align: center">'.array_shift($err).'</div><hr>';
     }
   }
+
 ?>
 
 <!DOCTYPE html>
