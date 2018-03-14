@@ -5,7 +5,7 @@ require_once('db.php');
 if (isset($_POST['register'])) {
 
     $username = $_POST['username'];
-    $password_1 = $_POST['password-1'];
+    $password_1 = $_POST['password'];
     $password_2 = $_POST['password-2'];
     $email = $_POST['email'];
 
