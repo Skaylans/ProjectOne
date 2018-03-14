@@ -1,5 +1,10 @@
 <?php require_once('db.php'); ?>
-<?php $users = R::find('users'); ?>
+<?php //$users = R::find('users'); 
+$sql_select = "SELECT * FROM users";
+$stmt = $conn->query($sql_select);
+$stmt->execute();
+$users = $stmt->fetchAll();
+?>
 
 
 <!DOCTYPE html>
@@ -28,10 +33,10 @@
        <th>Пароль</th>
       </tr>
       <?php foreach ($users as $user): ?>
-        <?php echo "<td style='text-align: center;'>".$user->id."</td>"; ?>
-        <?php echo "<td>".$user->login."</td>"; ?>
-        <?php echo "<td>".$user->email."</td>"; ?>
-        <?php echo "<td>".$user->password."</td></tr>"; ?>
+        <?php echo "<td style='text-align: center;'>".$user['id']."</td>"; ?>
+        <?php echo "<td>".$user['login']"</td>"; ?>
+        <?php echo "<td>".$user['email']."</td>"; ?>
+        <?php echo "<td>".$user['password']."</td></tr>"; ?>
       <?php endforeach; ?>
      </thead>
     </table>
