@@ -5,6 +5,50 @@ require_once('db.php');
 if (isset($_POST['register'])) {
 
     $username = $_POST['username'];
+    $password_1 = $_POST['password-1'];
+    $password_2 = $_POST['password-2'];
+    $email = $_POST['email'];
+
+    $err = array();
+    if($username = '') {
+        $err[] = 'Поле логин незаполненно!';
+    }
+    elseif($email = '') {
+        $err[] = 'Поле E-mail незаполненно!';
+    }
+    elseif($password_1 = '') {
+        $err[] = 'Поле пароль незаполненно!';
+    }
+    elseif($password_1 != $password_2) {
+        $err[] = 'Неправельно заполнен пароль-2!';
+    }
+
+    if(count($err) > 0) {
+        $sql_select = "SELECT * FROM signup WHERE username = '$username'";
+        $stmt = $conn->query($sql_select);
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+        if(count($data) > 0) {
+            $sql_insert = "INSERT INTO signup (username, password, email) VALUES (?,?,?)";
+            $stmt = $conn->prepare($sql_insert);
+            $stmt->bindValue(1, $username);
+            $stmt->bindValue(2, $password_1);
+            $stmt->bindValue(3, $email);
+            $stmt->execute();
+
+            echo '<div style= "color: white;">Вы зарегистрированны!</div><hr>';
+        }
+        else {
+            echo '<div style = "color: red;">Пользователь с таким логином уже существует!</div><hr>';
+        }
+    }
+    else {
+        echo '<div style = "color: red;">'.array_shift($err).'</div><hr>';
+    }
+
+    /*
+
+    $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password_2 = $_POST['password-2'];
@@ -24,26 +68,27 @@ if (isset($_POST['register'])) {
     }
 
     if(empty($err)) {
-        $sql_select = "SELECT * FROM users WHERE login = '$username'";
+        $sql_select = "SELECT username FROM signup WHERE username = '$username'";
         $stmt = $conn->query($sql_select);
         $stmt->execute();
         $data = $stmt->fetchAll();
-      if(count($data > 0) {
-            $sql_insert = "INSERT INTO users (login, email, password) VALUES (?,?,?)";
-            $stmt = $conn->prepare($sql_insert);
-            $stmt->bindValue(1, $username);
-            $stmt->bindValue(2, $email);
-            $stmt->bindValue(3, $password);
-            $stmt->execute();
-            echo '<div style= "color: white;">Вы зарегистрированны!</div><hr>';
-        }
-        else {
+        if(count($data > 0) {
+          $sql_insert = "INSERT INTO 'signup' (username, password, email) VALUES (?,?,?)";
+          $stmt = $conn->prepare($sql_insert);
+          $stmt->bindValue(1, $username);
+          $stmt->bindValue(2, $password);
+          $stmt->bindValue(3, $email);
+          $stmt->execute();
+          echo '<div style= "color: white;">Вы зарегистрированны!</div><hr>';
+    }
+    else {
           echo '<div style = "color: red;">Пользователь с таким логином уже существует!</div><hr>';
         }
     }
     else {
       echo '<div style = "color: red; text-align: center">'.array_shift($err).'</div><hr>';
     }
+    */
   }
 
 ?>
@@ -57,7 +102,6 @@ if (isset($_POST['register'])) {
     <title>Регистрация</title>
   </head>
   <body>
-
     <div class="container">
       <a href="/index.php"><img src="img/user.png"></a>
       <form class="" action="sugnup.php" method="post">
