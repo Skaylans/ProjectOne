@@ -23,7 +23,7 @@ if (isset($_POST['register'])) {
         $err[] = 'Неправельно заполнен пароль-2!';
     }
 
-    if(count($err) > 0) {
+    if(empty($err)) {
         $sql_select = "SELECT * FROM users WHERE login = '$username'";
         $stmt = $conn->query($sql_select);
         $stmt->execute();
