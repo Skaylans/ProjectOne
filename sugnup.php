@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
     }
     
     if(empty($err)) {
-        $sql_select = "SELECT * FROM users WHERE login = '$username'";
+        $sql_select = "SELECT * FROM users WHERE login = '$username' OR email = '$email' ";
         $stmt = $conn->query($sql_select);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -34,14 +34,14 @@ if (isset($_POST['submit'])) {
             $stmt->bindValue(3, $email);
             $stmt->execute();
             
-            echo '<div style= "color: white;">Вы зарегистрированны!</div><hr>';
+            echo '<div style= "color: blue; text-align: center;">Вы зарегистрированны!</div><hr>';
         }
         else {
-            echo '<div style = "color: red;">Такой пользователь уже существует!</div><hr>';
+            echo '<div style = "color: red; text-align: center;">Пользователь с таким логином или E-mail уже существует!</div><hr>';
         }
     }
     else {
-        echo '<div style = "color: red;">'.array_shift($err).'</div><hr>'; 
+        echo '<div style = "color: red; text-align: center;">'.array_shift($err).'</div><hr>'; 
     }
 }
 ?>
