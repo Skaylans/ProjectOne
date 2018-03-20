@@ -6,7 +6,6 @@ $stmt->execute();
 $users = $stmt->fetchAll();
 
 if(isset($_POST["createTwo"])) {
-  try {
       $sql = "CREATE TABLE insurer(
           insurer_id INT NOT NULL IDENTITY(1,1),
           PRIMARY KEY(id),
@@ -21,19 +20,10 @@ if(isset($_POST["createTwo"])) {
           insurer_house VARCHAR(5),
           sumIns INT)";
           $conn->query($sql);
-    
-    echo '<div style = "color: red; text-align: center;">Таблица Страховщики создана!</div><hr>';
-      }
-  catch (PDOException $e) {
-      print("Ошибка подключения к SQL Server.");
-      die(print_r($e));
-  }
+  echo '<div style = "color: red; text-align: center;">Таблица Страховщики создана!</div><hr>';
 }
 
 if(isset($_POST["createOne"])) {
-  try {
-      $conn = new PDO($dsn, $login, $pass);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $sql = "CREATE TABLE insurant(
           insurant_id INT NOT NULL IDENTITY(1,1),
           PRIMARY KEY(id),
@@ -61,17 +51,9 @@ if(isset($_POST["createOne"])) {
           $conn->query($sql);
 
           echo "<h3>Таблица Страхователя создана.</h3>";
-      }
-  catch (PDOException $e) {
-      print("Ошибка подключения к SQL Server.");
-      die(print_r($e));
-  }
 }
 
 if(isset($_POST["createFour"])) {
-  try {
-      $conn = new PDO($dsn, $login, $pass);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $sql = "CREATE TABLE contract(
           contract_id INT NOT NULL IDENTITY(1,1),
           PRIMARY KEY(id),
@@ -86,17 +68,9 @@ if(isset($_POST["createFour"])) {
           $conn->query($sql);
 
           echo "<h3>Таблица Страхователя создана.</h3>";
-      }
-  catch (PDOException $e) {
-      print("Ошибка подключения к SQL Server.");
-      die(print_r($e));
-  }
 }
 
 if(isset($_POST["createThree"])) {
-  try {
-      $conn = new PDO($dsn, $login, $pass);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $sql = "CREATE TABLE insured(
           insured_id INT NOT NULL IDENTITY(1,1),
           PRIMARY KEY(id),
@@ -108,11 +82,6 @@ if(isset($_POST["createThree"])) {
           $conn->query($sql);
 
           echo "<h3>Таблица Страхователя создана.</h3>";
-      }
-  catch (PDOException $e) {
-      print("Ошибка подключения к SQL Server.");
-      die(print_r($e));
-  }
 }
 
 
