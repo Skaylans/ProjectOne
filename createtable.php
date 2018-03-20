@@ -38,7 +38,7 @@ try {
         insurer_city VARCHAR(50),
         insurer_street VARCHAR(30),
         insurer_house VARCHAR(5),
-        sumIns INT(15))";
+        sumIns INT)";
 
         $conn->query($sql);
 
