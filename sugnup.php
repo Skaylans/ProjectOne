@@ -1,7 +1,7 @@
 <?php
 require_once('db.php');
 if (isset($_POST['submit'])) {
-    
+
     $username = $_POST['username'];
     $password_1 = $_POST['password-1'];
     $password_2 = $_POST['password-2'];
@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
 
     $err = array();
     if(empty($username)) {
-        $err[] = 'Поле логин незаполненно!';  
+        $err[] = 'Поле логин незаполненно!';
     }
     elseif(empty($email)) {
         $err[] = 'Поле E-mail незаполненно!';
@@ -20,20 +20,20 @@ if (isset($_POST['submit'])) {
     elseif($password_1 != $password_2) {
         $err[] = 'Неправельно заполнен пароль-2!';
     }
-    
+
     if(empty($err)) {
         $sql_select = "SELECT * FROM users WHERE login = '$username' OR email = '$email' ";
         $stmt = $conn->query($sql_select);
         $stmt->execute();
         $data = $stmt->fetchAll();
-        if(count($data) > 0) {
+        if(count($data) == 0) {
             $sql_insert = "INSERT INTO users (login, password, email) VALUES (?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $username);
             $stmt->bindValue(2, $password_1);
             $stmt->bindValue(3, $email);
             $stmt->execute();
-            
+
             echo '<div style= "color: blue; text-align: center;">Вы зарегистрированны!</div><hr>';
         }
         else {
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
         }
     }
     else {
-        echo '<div style = "color: red; text-align: center;">'.array_shift($err).'</div><hr>'; 
+        echo '<div style = "color: red; text-align: center;">'.array_shift($err).'</div><hr>';
     }
 }
 ?>
@@ -60,9 +60,9 @@ if (isset($_POST['submit'])) {
       <form class="" action="sugnup.php" method="post">
         <div class="dws-input">
           <input type="text" name="username" placeholder="Придумайте логин">
-          <input type="text" name="email" placeholder="Ваш E-mail...">  
+          <input type="text" name="email" placeholder="Ваш E-mail...">
           <input type="password" name="password-1" placeholder="Придумайте пароль">
-          <input type="password" name="password-2" placeholder="Введите пароль еще раз">    
+          <input type="password" name="password-2" placeholder="Введите пароль еще раз">
         </div>
         <input class="dws-submit" type="submit" name="submit" value="Регистрация">
       </form>
