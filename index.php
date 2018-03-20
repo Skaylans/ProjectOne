@@ -40,6 +40,20 @@ require_once('db.php');
         <br>
         <a href="\sugnup.php">Регистрация</a>
       </form>
+      
+    <?php elseif($_SESSION['logged_user']) = 'Admin' : ?>
+      
+      <div style="padding: 10px;">
+        <h1 style="color: white;">Добро пожаловать, <span style="color: #eec30a;"><?php echo $_SESSION['logged_user']; ?></span></h1>
+      </div>
+
+      <hr>
+
+      <div style="padding: 50px;font-size: 2.4em;">
+        <p><a href="\table-bd..php" style="color: #ee7e0a;">Панель администратора</a></p>
+        <p><a href="\exit.php" style="color: #f0f0f0;">Выйти</a></p>
+      </div>
+      
 
     <?php else : ?>
       <div style="padding: 10px;">
