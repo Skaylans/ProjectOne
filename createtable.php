@@ -4,7 +4,7 @@ $dsn = "sqlsrv:server = tcp:safelife.database.windows.net,1433; Database = Insur
 $login = "Romanow";
 $pass = "Qwerty123456";
 
-try {
+/*try {
     $conn = new PDO($dsn, $login, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "CREATE TABLE users(
@@ -17,6 +17,32 @@ try {
         $conn->query($sql);
         
         echo "<h3>Таблица создана.</h3>";
+    }
+catch (PDOException $e) {
+    print("Ошибка подключения к SQL Server.");
+    die(print_r($e));
+}*/
+
+try {
+    $conn = new PDO($dsn, $login, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "CREATE TABLE insurer(
+        id INT NOT NULL IDENTITY(1,1),
+        PRIMARY KEY(id),
+        appellation VARCHAR(50),
+        TIN VARCHAR(50),
+        checkAccount VARCHAR(50),
+        BIC VARCHAR(50),
+        corAccount VARCHAR(50),
+        postcode VARCHAR(10),
+        insurer_city VARCHAR(50),
+        insurer_street VARCHAR(30),
+        insurer_house VARCHAR(5),
+        sumIns INT(15))";
+
+        $conn->query($sql);
+
+        echo "<h3>Таблица Страховщики создана.</h3>";
     }
 catch (PDOException $e) {
     print("Ошибка подключения к SQL Server.");
