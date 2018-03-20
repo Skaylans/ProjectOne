@@ -18,7 +18,7 @@ if(isset($_POST["createTwo"])) {
           insurer_city VARCHAR(50),
           insurer_street VARCHAR(30),
           insurer_house VARCHAR(5),
-          sumIns INT)";
+          sumIns DECIMAL(15,2))";
           $conn->query($sql);
   echo '<div style = "color: red; text-align: center;">Таблица Страховщики создана!</div><hr>';
 }
@@ -46,7 +46,7 @@ if(isset($_POST["createOne"])) {
           issuedBy VARCHAR(100),
           dateIssue VARCHAR(10),
           cardNumber VARCHAR(20),
-          transferAmount INT)";
+          transferAmount DECIMAL(15,2))";
 
           $conn->query($sql);
 
