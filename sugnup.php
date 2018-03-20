@@ -6,17 +6,15 @@ if (isset($_POST['submit'])) {
     $password_1 = $_POST['password-1'];
     $password_2 = $_POST['password-2'];
     $email = $_POST['email'];
-    
-   
-    
+
     $err = array();
-    if($username = '') {
+    if(empty($username)) {
         $err[] = 'Поле логин незаполненно!';  
     }
-    elseif($email = '') {
+    elseif(empty($email)) {
         $err[] = 'Поле E-mail незаполненно!';
     }
-    elseif($password_1 = '') {
+    elseif(empty($password_1)) {
         $err[] = 'Поле пароль незаполненно!';
     }
     elseif($password_1 != $password_2) {
@@ -28,7 +26,7 @@ if (isset($_POST['submit'])) {
         $stmt = $conn->query($sql_select);
         $stmt->execute();
         $data = $stmt->fetchAll();
-        if(count($data) == 0) {
+        if(count($data) > 0) {
             $sql_insert = "INSERT INTO users (login, password, email) VALUES (?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $username);
