@@ -7,8 +7,6 @@ $users = $stmt->fetchAll();
 
 if(isset($_POST["createTwo"])) {
   try {
-      $conn = new PDO($dsn, $login, $pass);
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $sql = "CREATE TABLE insurer(
           insurer_id INT NOT NULL IDENTITY(1,1),
           PRIMARY KEY(id),
@@ -23,7 +21,8 @@ if(isset($_POST["createTwo"])) {
           insurer_house VARCHAR(5),
           sumIns INT)";
           $conn->query($sql);
-          echo "<h3>Таблица Страховщики создана.</h3>";
+    
+    echo '<div style = "color: red; text-align: center;">Таблица Страховщики создана!</div><hr>';
       }
   catch (PDOException $e) {
       print("Ошибка подключения к SQL Server.");
