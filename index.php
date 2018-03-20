@@ -41,7 +41,7 @@ require_once('db.php');
         <a href="\sugnup.php">Регистрация</a>
       </form>
       
-    <?php elseif($_SESSION['logged_user']) = 'Admin' : ?>
+    <?php elseif($_SESSION['logged_user'] == 'Admin') : ?>
       
       <div style="padding: 10px;">
         <h1 style="color: white;">Добро пожаловать, <span style="color: #eec30a;"><?php echo $_SESSION['logged_user']; ?></span></h1>
