@@ -4,7 +4,7 @@
   <p style="text-align: center;">
     Сейчас авторизован пользователь:
     <span style="color: #eec30a;">
-      <?php echo $_SESSION['logged_user']->login; ?>
+      <?php echo $_SESSION['logged_user']; ?>
     </span>
   </p>
 </div>
