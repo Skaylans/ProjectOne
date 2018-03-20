@@ -4,6 +4,119 @@ $sql_select = "SELECT * FROM users";
 $stmt = $conn->query($sql_select);
 $stmt->execute();
 $users = $stmt->fetchAll();
+
+if(isset($_POST["createTwo"])) {
+  try {
+      $conn = new PDO($dsn, $login, $pass);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $sql = "CREATE TABLE insurer(
+          insurer_id INT NOT NULL IDENTITY(1,1),
+          PRIMARY KEY(id),
+          appellation VARCHAR(50),
+          TIN VARCHAR(50),
+          checkAccount VARCHAR(50),
+          BIC VARCHAR(50),
+          corAccount VARCHAR(50),
+          postcode VARCHAR(10),
+          insurer_city VARCHAR(50),
+          insurer_street VARCHAR(30),
+          insurer_house VARCHAR(5),
+          sumIns INT)";
+          $conn->query($sql);
+          echo "<h3>Таблица Страховщики создана.</h3>";
+      }
+  catch (PDOException $e) {
+      print("Ошибка подключения к SQL Server.");
+      die(print_r($e));
+  }
+}
+
+if(isset($_POST["createOne"])) {
+  try {
+      $conn = new PDO($dsn, $login, $pass);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $sql = "CREATE TABLE insurant(
+          insurant_id INT NOT NULL IDENTITY(1,1),
+          PRIMARY KEY(id),
+          insurant_first_name VARCHAR(50),
+          insurant_last_name VARCHAR(50),
+          insurant_middle_name VARCHAR(50),
+          insurant_email VARCHAR(50),
+          gender VARCHAR(10),
+          insurant_birthdate VARCHAR(10),
+          phone_number VARCHAR(20),
+          insurant_city_reg VARCHAR(50),
+          insurant_street_reg VARCHAR(30),
+          insurant_house_reg VARCHAR(5),
+          insurant_apartment_reg VARCHAR(10),
+          insurant_city_res VARCHAR(50),
+          insurant_street_res VARCHAR(30),
+          insurant_house_res VARCHAR(5),
+          insurant_apartment_res VARCHAR(10),
+          series_number VARCHAR(15),
+          issuedBy VARCHAR(100),
+          dateIssue VARCHAR(10),
+          cardNumber VARCHAR(20),
+          transferAmount INT)";
+
+          $conn->query($sql);
+
+          echo "<h3>Таблица Страхователя создана.</h3>";
+      }
+  catch (PDOException $e) {
+      print("Ошибка подключения к SQL Server.");
+      die(print_r($e));
+  }
+}
+
+if(isset($_POST["createFour"])) {
+  try {
+      $conn = new PDO($dsn, $login, $pass);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $sql = "CREATE TABLE contract(
+          contract_id INT NOT NULL IDENTITY(1,1),
+          PRIMARY KEY(id),
+          insurant_id INT,
+          insurer_id INT,
+          insured_id INT,
+          start_date VARCHAR(10),
+          end_date VARCHAR(10),
+          insuranceEvent VARCHAR(50),
+          insurancePeriod VARCHAR(10))";
+
+          $conn->query($sql);
+
+          echo "<h3>Таблица Страхователя создана.</h3>";
+      }
+  catch (PDOException $e) {
+      print("Ошибка подключения к SQL Server.");
+      die(print_r($e));
+  }
+}
+
+if(isset($_POST["createThree"])) {
+  try {
+      $conn = new PDO($dsn, $login, $pass);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $sql = "CREATE TABLE insured(
+          insured_id INT NOT NULL IDENTITY(1,1),
+          PRIMARY KEY(id),
+          insured_first_name VARCHAR(50),
+          insured_last_name VARCHAR(50),
+          insured_middle_name VARCHAR(50),
+          insured_birthdate VARCHAR(10))";
+
+          $conn->query($sql);
+
+          echo "<h3>Таблица Страхователя создана.</h3>";
+      }
+  catch (PDOException $e) {
+      print("Ошибка подключения к SQL Server.");
+      die(print_r($e));
+  }
+}
+
+
  ?>
 
 <!DOCTYPE html>
@@ -39,7 +152,12 @@ $users = $stmt->fetchAll();
       <?php endforeach; ?>
      </thead>
     </table>
+    <input type="submit" name="createOne" value="Создать таблицу страхователи">
+    <input type="submit" name="createTwo" value="Создать таблицу страховщики">
+    <input type="submit" name="createThree" value="Создать таблицу застрахованные">
+    <input type="submit" name="createFour" value="Создать таблицу договоры">
    </div>
   </div>
  </body>
 </html>
+>
