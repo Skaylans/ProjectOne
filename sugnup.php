@@ -24,12 +24,12 @@ if (isset($_POST['submit'])) {
     }
     
     if(empty($err)) {
-        $sql_select = "SELECT * FROM signup WHERE username = '$username'";
+        $sql_select = "SELECT * FROM users WHERE login = '$username'";
         $stmt = $conn->query($sql_select);
         $stmt->execute();
         $data = $stmt->fetchAll();
         if(count($data) == 0) {
-            $sql_insert = "INSERT INTO signup (username, password, email) VALUES (?,?,?)";
+            $sql_insert = "INSERT INTO users (login, password, email) VALUES (?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $username);
             $stmt->bindValue(2, $password_1);
