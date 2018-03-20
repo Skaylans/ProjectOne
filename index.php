@@ -1,49 +1,20 @@
 <?php
-
 require_once('db.php');
-
   if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $err = array();
-    if (empty($username)) {
-      $err[] = 'Поле логин незаполенно!';
-    }
-    else if (empty($password)) {
-      $err[] = "Поле пароль незаполненно!";
-    }
-
-    if (!empty($err)) {
-      $_SESSION["username"] = $user_username;
-      $sql_select = "SELECT login FROM users WHERE login = '$username' AND password = '$password'";
+    $user_username = $_POST['username'];
+    $user_password = $_POST['password'];
+    if (!empty($user_username) && !empty($user_password)) {
+      $_SESSION["logged_user"] = $user_username;
+      $sql_select = "SELECT 'id', 'login' FROM users WHERE login = '$user_username' AND password = '$user_password'";
       $stmt = $conn->query($sql_select);
       $stmt->execute();
-      $user = $stmt->fetchAll();
-
-      $_SESSION['logged_user'] = $user;
-      echo '<div style="color: #2715f9;text-align: center;">Вы авторизованы!</div><hr>';
+      $data = $stmt->fetchAll();
     }
     else {
-      echo '<div style="color: #fc0808;text-align: center;">'.array_shift($err).'</div><hr>';
+      echo '<div style = "color: red; text-align: center;">Поля заполнены неправельно!</div><hr>';
     }
-
-    /*
-    $err = array();
-    $user = R::findOne("users", 'login = ?', array($username));
-    if ($user) {
-      if (password_verify($_POST['password'], $user->password)) {}
-      else {
-        $err[] = 'Неверно введен пароль!';
-      }
-    }
-    else {
-      $err[] = 'Пользователь с таким логином не найден!';
-    }
-    if (!empty($err)) { } */
   }
  ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -86,4 +57,3 @@ require_once('db.php');
     </div>
   </body>
 </html>
-
