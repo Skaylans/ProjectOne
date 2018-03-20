@@ -62,7 +62,7 @@ require_once('db.php');
 
       <hr>
 
-      <div style="padding: 50px;font-size: 2.4em;">
+      <div style="padding: 45px;font-size: 2.1em;">
         <p><a href="\personal.php" style="color: #ee7e0a;">Мой профиль</a></p>
         <p><a href="\exit.php" style="color: #f0f0f0;">Выйти</a></p>
       </div>
