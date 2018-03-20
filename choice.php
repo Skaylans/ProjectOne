@@ -4,7 +4,7 @@
   <p style="text-align: center;"> <a href="/personal.php"><img src="img/left207.png" style="width: 25px;height: 25px; float: left;"></a>
     Сейчас авторизован пользователь:
     <span style="color: #eec30a;">
-      <?php echo $_SESSION['logged_user']->login; ?>
+      <?php echo $_SESSION['logged_user']; ?>
     </span>
   </p>
 
