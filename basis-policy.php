@@ -2,39 +2,99 @@
 require_once('db.php');
 
 if (isset($_POST['payment'])) {
-  
-  $phonenum = $_POST['user_phone'];
-  $insurant_email = $_POST['insurant_email'];
-  
-  $insurant_lastname = $_POST['insurant_lastname'];
-  $insurant_name = $_POST['insurant_name'];
-  $insurant_middlename = $_POST['insurant_middlename'];
-  
-  $gender = $_POST['gender'];
-  $insurant_birthdate = $_POST['insurant_birthdate'];
-  
-  $insurant_psn = $_POST['insurant_psn'];
-  $issued_by = $_POST['issued_by'];
-  $date_issue = $_POST['date_issue'];
-  
-  $insurant_city_reg = $_POST['insurant_city_reg'];
-  $insurant_street_reg = $_POST['insurant_street_reg'];
-  $insurant_house_reg = $_POST['insurant_house_reg'];
-  $insurant_room_reg = $_POST['insurant_room_reg'];
-  
-  $insurant_city_res = $_POST['insurant_city_res'];
-  $insurant_street_res = $_POST['insurant_street_res'];
-  $insurant_house_res = $_POST['insurant_house_res'];
-  $insurant_room_res = $_POST['insurant_room_res'];
-  
-  $address_include = $_POST['address_include'];
-  $insured_include = $_POST['insured_include'];
-  
-  $insured_lastname = $_POST['insured_lastname'];
-  $insured_name = $_POST['insured_name'];
-  $insured_middlename = $_POST['insured_middlename']
-  $insured_birthdate = $_POST['insured_birthdate'];
-      
+  if(!empty($_POST)) {
+    try {
+      $phonenum            = $_POST['user_phone'];
+      $insurant_email      = $_POST['insurant_email'];
+      $insurant_lastname   = $_POST['insurant_lastname'];
+      $insurant_name       = $_POST['insurant_name'];
+      $insurant_middlename = $_POST['insurant_middlename'];
+      $gender              = $_POST['gender'];
+      $insurant_birthdate  = $_POST['insurant_birthdate'];
+      $insurant_psn        = $_POST['insurant_psn'];
+      $issued_by           = $_POST['issued_by'];
+      $date_issue          = $_POST['date_issue'];
+      $insurant_city_reg   = $_POST['insurant_city_reg'];
+      $insurant_street_reg = $_POST['insurant_street_reg'];
+      $insurant_house_reg  = $_POST['insurant_house_reg'];
+      $insurant_room_reg   = $_POST['insurant_room_reg'];
+      $insurant_city_res   = $_POST['insurant_city_res'];
+      $insurant_street_res = $_POST['insurant_street_res'];
+      $insurant_house_res  = $_POST['insurant_house_res'];
+      $insurant_room_res   = $_POST['insurant_room_res'];
+    }
+    catch(Exception $e) {
+      die(var_dump($e));
+    }
+  /*    $sql_insert ="INSERT INTO insurant (
+        phone_number,
+        insurant_email
+        insurant_last_name,
+        insurant_first_name,
+        insurant_middle_name,
+        gender,
+        insurant_birthdate,
+        series_number,
+        issuedBy,
+        dateIssue,
+        insurant_city_reg,
+        insurant_street_reg,
+        insurant_house_reg,
+        insurant_apartment_reg,
+        insurant_city_res,
+        insurant_street_res,
+        insurant_house_res,
+        insurant_apartment_res,
+        cardNumber,
+        transferAmount
+      ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+      $stmt = $conn->prepare($sql_insert);
+      $stmt->bindValue(1, $phonenum);
+      $stmt->bindValue(2, $insurant_email);
+      $stmt->bindValue(3, $insurant_lastname);
+      $stmt->bindValue(4, $insurant_name);
+      $stmt->bindValue(5, $insurant_middlename);
+      $stmt->bindValue(6, $gender);
+      $stmt->bindValue(7, $insurant_birthdate);
+      $stmt->bindValue(8, $insurant_psn);
+      $stmt->bindValue(9, $issued_by);
+      $stmt->bindValue(10, $date_issue);
+      $stmt->bindValue(11, $insurant_city_reg);
+      $stmt->bindValue(12, $insurant_street_reg);
+      $stmt->bindValue(13, $insurant_house_reg);
+      $stmt->bindValue(14, $insurant_room_reg);
+      $stmt->bindValue(15, $insurant_city_res);
+      $stmt->bindValue(16, $insurant_street_res);
+      $stmt->bindValue(17, $insurant_house_res);
+      $stmt->bindValue(18, $insurant_room_res);
+      $stmt->execute();
+
+      echo '<div style = "color: blue; text-align: center;">Страхователь записан в базу!</div><hr>';
+    }
+    catch(Exception $e) {
+      die(var_dump($e));
+    }
+
+    try {
+      $insured_lastname   = $_POST['insured_lastname'];
+      $insured_name       = $_POST['insured_name'];
+      $insured_middlename = $_POST['insured_middlename'];
+      $insured_birthdate  = $_POST['insured_birthdate'];
+
+      $sql_insert ="INSERT INTO insured (insured_first_name, insured_last_name, insured_middle_name,insured_birthdate) VALUES (?,?,?,?)";
+      $stmt = $conn->prepare($sql_insert);
+      $stmt->bindValue(1, $insured_lastname);
+      $stmt->bindValue(2, $insured_name);
+      $stmt->bindValue(3, $insured_middlename);
+      $stmt->bindValue(4, $insured_birthdate);
+      $stmt->execute();
+
+      echo '<div style = "color: blue; text-align: center;">Застрахованный записан в базу!</div><hr>';
+    }
+    catch(Exception $e) {
+      die(var_dump($e));
+    }
+  }     
 }
 
 
