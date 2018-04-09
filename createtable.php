@@ -124,6 +124,6 @@ try {
 catch (PDOException $e) {
     print("Ошибка подключения к SQL Server.");
     die(print_r($e));
-} */
+} 
 
 ?>
