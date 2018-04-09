@@ -127,7 +127,7 @@ try {
     $stmt->execute();
     $date = $stmt->fetchAll();
     if(count($date) == 0) {
-        $insert = "INSERT INTO insurers (appellation, TIN, checkAccount, BIC, corAccount, postcode, insurer_city, insurer_street, insurer_house, sumIns) VALUES 
+        $insert = "INSERT INTO insureres (appellation, TIN, checkAccount, BIC, corAccount, postcode, insurer_city, insurer_street, insurer_house, sumIns) VALUES 
         ('Тинькофф Страхование', '5117059685', '40072758430020034122453', '044327295', '301419569000000006573', '140400', 'РФ, Саратовская область, г. Саратов', 'Московская 18', '3', '500000.00'), 
         ('БИНБАНК', '5037455674', '40072758430043603412347', '044327367', '301419569000000007313', '144404', 'РФ, Саратовская область, г. Саратов', 'Советская 22', '5', '300000.00'), 
         ('Росгосстрах', '5063755980', '40072758450060341367300', '101631367', '11079569330000006780', '410313', 'РФ, Саратовская область, г. Саратов', 'Гагарина 10', '16', '400000.00'), 
