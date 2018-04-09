@@ -10,10 +10,10 @@ background: url("/img/luka.jpg") no-repeat center center fixed;
 
 form {
   width: 700px;
-  max-height: 3000px;
+  max-height: 4000px;
   background-color: rgba(51, 123, 218, 0.45);
   padding: 20px;
-  margin: 250px -550px 0 auto;
+  margin: 120px -550px 250px auto;
   font-family: 'Roboto Slab', serif;
   border-radius: 22px;
 }
@@ -47,6 +47,7 @@ input[type="text"] {
 
 
 textarea {
+  max-width: 650px;
   background-color: rgba(218, 35, 57, 0.52);
   border : 3px solid white;
   color: white;
