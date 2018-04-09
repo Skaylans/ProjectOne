@@ -29,7 +29,7 @@ if (isset($_POST['conclude'])) {
   $nameInsured = $_POST['to_insured_name'];
   $middlenameInsured = $_POST['to_insured_middlename'];
 
-  $sql_select_insurer = "SELECT insurer_id FROM insurer WHERE appellation = '$nameInsurer'";
+  $sql_select_insurer = "SELECT insurer_id FROM insurers WHERE appellation = '$nameInsurer'";
   $stmt = $conn->query($sql_select_insurer);
   $stmt->execute();
   $boxOnes = $stmt->fetchAll();
@@ -37,7 +37,7 @@ if (isset($_POST['conclude'])) {
     $insurerID .= $boxOne['insurer_id'];
   }
 
-  $sql_select_insurant = "SELECT insurant_id FROM insurant WHERE insurant_first_name = '$nameInsurant' AND insurant_last_name = '$lastnameInsurant' AND insurant_middle_name = '$middlenameInsurant'";
+  $sql_select_insurant = "SELECT insurant_id FROM insurants WHERE insurant_first_name = '$nameInsurant' AND insurant_last_name = '$lastnameInsurant' AND insurant_middle_name = '$middlenameInsurant'";
   $stmt = $conn->query($sql_select_insurant);
   $stmt->execute();
   $boxTwos = $stmt->fetchAll();
