@@ -4,7 +4,7 @@ require_once('db.php');
 $proto = '';
 $user_name = $_SESSION['logged_user'];
 
-  $query = "SELECT appellation FROM insurer ORDER BY appellation";
+  $query = "SELECT appellation FROM insurers ORDER BY appellation";
   $stmt = $conn->prepare($query);
   $stmt->execute();
   $insurers = $stmt->fetchAll();
@@ -12,12 +12,12 @@ $user_name = $_SESSION['logged_user'];
     $insurer .= '<option>'.$row["appellation"].'</option >';
   }
 
-  $sql_select_usersID = "SELECT user_id FROM users WHERE login = '$user_name'";
+  $sql_select_usersID = "SELECT id FROM users WHERE login = '$user_name'";
   $stmt = $conn->query($sql_select_usersID);
   $stmt->execute();
   $users = $stmt->fetchAll();
   foreach ($users as $user) {
-    $userID .= $user['user_id'];
+    $userID .= $user['id'];
   }
 
 if (isset($_POST['payment'])) {
@@ -41,7 +41,7 @@ if (isset($_POST['payment'])) {
       $insurant_room_res   = $_POST['insurant_room_res'];
 
 
-      $sql_select_insurant = "SELECT * FROM insurant WHERE insurant_email = '$insurant_email'";
+      $sql_select_insurant = "SELECT * FROM insurants WHERE insurant_email = '$insurant_email'";
       $stmt = $conn->query($sql_select_insurant);
       $stmt->execute();
       $data1 = $stmt->fetchAll();
