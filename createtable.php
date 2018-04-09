@@ -23,6 +23,41 @@ catch (PDOException $e) {
     die(print_r($e));
 }*/
 
+
+try {
+    $conn = new PDO($dsn, $login, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "CREATE TABLE insurant(
+          insurant_id INT NOT NULL IDENTITY(1,1),
+          PRIMARY KEY(insurant_id),
+          insurant_first_name VARCHAR(50),
+          insurant_last_name VARCHAR(50),
+          insurant_middle_name VARCHAR(50),
+          insurant_email VARCHAR(50),
+          gender VARCHAR(10),
+          insurant_birthdate VARCHAR(10),
+          phone_number VARCHAR(20),
+          insurant_city_reg VARCHAR(50),
+          insurant_street_reg VARCHAR(30),
+          insurant_house_reg VARCHAR(5),
+          insurant_apartment_reg VARCHAR(10),
+          insurant_city_res VARCHAR(50),
+          insurant_street_res VARCHAR(30),
+          insurant_house_res VARCHAR(5),
+          insurant_apartment_res VARCHAR(10),
+          series_number VARCHAR(15),
+          issuedBy VARCHAR(100),
+          dateIssue VARCHAR(10))";
+          $conn->query($sql);
+          echo "<h3>Таблица Страхователя создана.</h3>";
+}
+catch (PDOException $e) {
+    print("Ошибка подключения к SQL Server.");
+    die(print_r($e));
+}
+
+/*
+
 try {
     $conn = new PDO($dsn, $login, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -46,6 +81,6 @@ try {
 catch (PDOException $e) {
     print("Ошибка подключения к SQL Server.");
     die(print_r($e));
-}
+} */
 
 ?>
