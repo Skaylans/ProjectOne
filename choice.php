@@ -12,27 +12,29 @@
 <?php endif; ?>
 
 
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/un-form.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <title>Выбор страховщика</title>
   </head>
+  <style media="screen">
+  .filfix {
+    font-size: 22px;
+    padding-left: 100px;
+  }
+  </style>
   <body>
     <div class="content">
-      <form class="" action="basis-policy.php" method="post">
-        <div class="insurer-box">Выберите страховщика</div>
+      <form class="" action="send.php" method="post">
+        <div class="insurer-box">Прикрепите пакет документов</div>
         <div class="select-insurer">
-          <select class="dws-insurer" name="insurer">
-            <option value=""></option>
-            <option value="Тинькофф Страхование">Тинькофф Страхование</option>
-            <option value="БИНБАНК">БИНБАНК</option>
-          </select>
-          <input class="btn" type="submit" name="create" value="Оформить полис">
+          <input name="fileAttach" type="file" class="filfix" required>
+          <input class="btn" type="submit" name="create" value="Отправить">
         </div>
       </form>
     </div>
   </body>
-</html>
+</html>>
