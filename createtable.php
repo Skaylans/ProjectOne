@@ -27,7 +27,7 @@ try {
     $conn = new PDO($dsn, $login, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "CREATE TABLE insurer(
-        id INT NOT NULL IDENTITY(1,1),
+        insurer_id INT NOT NULL IDENTITY(1,1),
         PRIMARY KEY(id),
         appellation VARCHAR(50),
         TIN VARCHAR(50),
@@ -38,8 +38,7 @@ try {
         insurer_city VARCHAR(50),
         insurer_street VARCHAR(30),
         insurer_house VARCHAR(5),
-        sumIns INT)";
-
+        sumIns DECIMAL(15,2))";
         $conn->query($sql);
 
         echo "<h3>Таблица Страховщики создана.</h3>";
