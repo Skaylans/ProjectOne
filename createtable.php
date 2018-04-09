@@ -4,6 +4,28 @@ $dsn = "sqlsrv:server = tcp:safelife.database.windows.net,1433; Database = Insur
 $login = "Romanow";
 $pass = "Qwerty123456";
 
+
+try {
+    $conn = new PDO($dsn, $login, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$sql = "CREATE TABLE contract(
+          contract_id INT NOT NULL IDENTITY(1,1),
+          PRIMARY KEY(id),
+          insurant_id INT,
+          insurer_id INT,
+          insured_id INT,
+          start_date VARCHAR(10),
+          end_date VARCHAR(10),
+          insuranceEvent VARCHAR(50),
+          insurancePeriod VARCHAR(10))";
+          $conn->query($sql);
+          echo "<h3>Таблица Страхователя создана.</h3>";
+}
+    catch (PDOException $e) {
+    print("Ошибка подключения к SQL Server.");
+    die(print_r($e));
+}
+
 /*try {
     $conn = new PDO($dsn, $login, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
