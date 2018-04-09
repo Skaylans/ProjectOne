@@ -117,7 +117,7 @@ INSERT INTO `insurers` (`insurer_id`, `appellation`, `TIN`, `checkAccount`, `BIC
 ('4', 'РЕСО-Гарантия', '2113354980', '4007275845006034142456', '101631367', '8091119330000003459', '413100', 'РФ, Саратовская область, г. Саратов', 'Тельмана 190', '46', '500000.00'), 
 ('5', 'МетЛайф', '4510354912', '4021275845000004142246', '100451367', '1110459330000003001', '401140', 'РФ, Саратовская область, г. Саратов', 'Астраханская 66', '13', '250000.00')
 
-/**/
+/**//*
 
 try {
     $conn = new PDO($dsn, $login, $pass);
@@ -142,6 +142,28 @@ try {
 catch (PDOException $e) {
     print("Ошибка подключения к SQL Server.");
     die(print_r($e));
+} */
+try {
+    $conn = new PDO($dsn, $login, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$sql = "CREATE TABLE insureres(
+          insurer_id INT NOT NULL IDENTITY(1,1),
+          PRIMARY KEY(insurer_id),
+          appellation VARCHAR(50),
+          TIN VARCHAR(50),
+          checkAccount VARCHAR(50),
+          BIC VARCHAR(50),
+          corAccount VARCHAR(50),
+          postcode VARCHAR(10),
+          insurer_city VARCHAR(50),
+          insurer_street VARCHAR(30),
+          insurer_house VARCHAR(5),
+          sumIns DECIMAL(15,2))";
+          $conn->query($sql);
+  echo '<div style = "color: red; text-align: center;">Таблица Страховщики создана!</div><hr>';
+}
+catch (PDOException $e) {
+    print("Ошибка подключения к SQL Server.");
+    die(print_r($e));
 } 
-
 ?>
