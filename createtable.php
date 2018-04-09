@@ -66,7 +66,6 @@ if (isset($_POST['submit'])) {
       <input type="text" name="check_fo" placeholder="расч.счет">
       <input type="text" name="check_ko" placeholder="корр.счет">
       <input type="text" name="sumln" placeholder="Сумма">
-      <input type="text" name="sumln">
       <br>
       <input type="submit" name="submit" value="submit">
     </form>
