@@ -56,15 +56,16 @@ if (isset($_POST['submit'])) {
   </head>
   <body>
     <form action="index.html" method="post">
-      <input type="text" name="app">
-      <input type="text" name="index_fo">
-      <input type="text" name="city_fo">
-      <input type="text" name="street_fo">
-      <input type="text" name="home_fo">
-      <input type="text" name="in_fo">
-      <input type="text" name="bic_fo">
-      <input type="text" name="check_fo">
-      <input type="text" name="check_ko">
+       <input type="text" name="app" placeholder="Название">
+      <input type="text" name="index_fo" placeholder="индекс">
+      <input type="text" name="city_fo" placeholder="город">
+      <input type="text" name="street_fo" placeholder="улица">
+      <input type="text" name="home_fo" placeholder="дом">
+      <input type="text" name="in_fo" placeholder="инн">
+      <input type="text" name="bic_fo" placeholder="бик">
+      <input type="text" name="check_fo" placeholder="расч.счет">
+      <input type="text" name="check_ko" placeholder="корр.счет">
+      <input type="text" name="sumln" placeholder="Сумма">
       <input type="text" name="sumln">
       <br>
       <input type="submit" name="submit" value="submit">
