@@ -17,7 +17,8 @@ $sql = "CREATE TABLE contract(
           start_date VARCHAR(10),
           end_date VARCHAR(10),
           insuranceEvent VARCHAR(50),
-          insurancePeriod VARCHAR(10))";
+          insurancePeriod VARCHAR(10),
+          insuranceAmount DECIMAL(15,2))";
           $conn->query($sql);
           echo "<h3>Таблица Страхователя создана.</h3>";
 }
@@ -78,7 +79,7 @@ catch (PDOException $e) {
     print("Ошибка подключения к SQL Server.");
     die(print_r($e));
 }
-*/
+
 try {
     $conn = new PDO($dsn, $login, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
