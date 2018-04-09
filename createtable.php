@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
       $stmt->bindValue(8, $insurer_street);
       $stmt->bindValue(9, $insurer_house);
       $stmt->bindValue(10, $sumIns);
+      $stmt->execute();
 
       echo '<div style = "color: blue; text-align: center;">Страховщик записан в базу!</div><hr>';
   }
