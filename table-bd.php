@@ -12,7 +12,7 @@ $stmt = $conn->query($sql_select_insurants);
 $stmt->execute();
 $insurants = $stmt->fetchAll();
 
-$sql_select_insurers = "SELECT * FROM insurers";
+$sql_select_insurers = "SELECT * FROM insureres";
 $stmt = $conn->query($sql_select_insurers);
 $stmt->execute();
 $insurers = $stmt->fetchAll();
