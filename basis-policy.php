@@ -287,6 +287,8 @@ if (isset($_POST['payment'])) {
               <label for="">Квартира</label>
               <input type="text" class="form-control" id="insurant_room_reg" name="insurant_room_reg" style="text-align: left; width: 120px;" >
             </div>
+            
+            <br><br><br>
 
             <legend><h3>Адрес проживания</h3></legend>
 
