@@ -1,11 +1,26 @@
 <?php require_once('db.php'); ?>
+
 <?php
-$sql_select = "SELECT * FROM users";
-$stmt = $conn->query($sql_select);
+
+$sql_select_users = "SELECT * FROM users";
+$stmt = $conn->query($sql_select_users);
 $stmt->execute();
 $users = $stmt->fetchAll();
 
-if(isset($_POST["createTwo"])) {
+$sql_select_insurants = "SELECT * FROM insurants";
+$stmt = $conn->query($sql_select_insurants);
+$stmt->execute();
+$insurants = $stmt->fetchAll();
+
+$sql_select_insurers = "SELECT * FROM insurers";
+$stmt = $conn->query($sql_select_insurers);
+$stmt->execute();
+$insurers = $stmt->fetchAll();
+
+
+/*
+
+if(isset($_POST['createTwo'])) {
       $sql = "CREATE TABLE insurer(
           insurer_id INT NOT NULL IDENTITY(1,1),
           PRIMARY KEY(id),
@@ -22,8 +37,7 @@ if(isset($_POST["createTwo"])) {
           $conn->query($sql);
   echo '<div style = "color: red; text-align: center;">Таблица Страховщики создана!</div><hr>';
 }
-
-if(isset($_POST["createOne"])) {
+if(isset($_POST['createOne'])) {
       $sql = "CREATE TABLE insurant(
           insurant_id INT NOT NULL IDENTITY(1,1),
           PRIMARY KEY(id),
@@ -47,13 +61,10 @@ if(isset($_POST["createOne"])) {
           dateIssue VARCHAR(10),
           cardNumber VARCHAR(20),
           transferAmount DECIMAL(15,2))";
-
           $conn->query($sql);
-
           echo "<h3>Таблица Страхователя создана.</h3>";
 }
-
-if(isset($_POST["createFour"])) {
+if(isset($_POST['createFour'])) {
       $sql = "CREATE TABLE contract(
           contract_id INT NOT NULL IDENTITY(1,1),
           PRIMARY KEY(id),
@@ -64,13 +75,10 @@ if(isset($_POST["createFour"])) {
           end_date VARCHAR(10),
           insuranceEvent VARCHAR(50),
           insurancePeriod VARCHAR(10))";
-
           $conn->query($sql);
-
           echo "<h3>Таблица Страхователя создана.</h3>";
 }
-
-if(isset($_POST["createThree"])) {
+if(isset($_POST['createThree'])) {
       $sql = "CREATE TABLE insured(
           insured_id INT NOT NULL IDENTITY(1,1),
           PRIMARY KEY(id),
@@ -78,13 +86,9 @@ if(isset($_POST["createThree"])) {
           insured_last_name VARCHAR(50),
           insured_middle_name VARCHAR(50),
           insured_birthdate VARCHAR(10))";
-
           $conn->query($sql);
-
           echo "<h3>Таблица Страхователя создана.</h3>";
-}
-
-
+}*/
  ?>
 
 <!DOCTYPE html>
@@ -97,7 +101,6 @@ if(isset($_POST["createThree"])) {
   <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
  </head>
  <body>
   <div class="container">
@@ -120,12 +123,125 @@ if(isset($_POST["createThree"])) {
       <?php endforeach; ?>
      </thead>
     </table>
-    <input type="submit" name="createOne" value="Создать таблицу страхователи">
-    <input type="submit" name="createTwo" value="Создать таблицу страховщики">
-    <input type="submit" name="createThree" value="Создать таблицу застрахованные">
-    <input type="submit" name="createFour" value="Создать таблицу договоры">
+    <hr>
+    <h1 align="center">Страхователи</h1>
+    <br>
+    <table id="" class="table table-bordered table-striped">
+      <thead>
+       <tr>
+        <th style='text-align: center;'>ID</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчетсво</th>
+        <th>Мобильный телефон</th>
+        <th>E-mail</th>
+        <th>Дата рождения</th>
+        <th>Пол</th>
+       </tr>
+       <?php foreach ($insurants as $insurant): ?>
+         <?php echo "<td style='text-align: center;'>".$insurant['insurant_id']."</td>"; ?>
+         <?php echo "<td>".$insurant['insurant_last_name']."</td>"; ?>
+         <?php echo "<td>".$insurant['insurant_first_name']."</td>"; ?>
+         <?php echo "<td>".$insurant['insurant_middle_name']."</td>"; ?>
+         <?php echo "<td>".$insurant['phone_number']."</td>"; ?>
+         <?php echo "<td>".$insurant['insurant_email']."</td>"; ?>
+         <?php echo "<td>".$insurant['insurant_birthdate']."</td>"; ?>
+         <?php echo "<td>".$insurant['gender']."</td></tr>"; ?>
+       <?php endforeach; ?>
+      </thead>
+    </table>
+    <label>Паспортные данные</label>
+    <table id="" class="table table-bordered table-striped">
+      <thead>
+       <tr>
+        <th style='text-align: center;'>Серия и номер</th>
+        <th>Кем выдан</th>
+        <th>Дата выдачи</th>
+       </tr>
+       <?php foreach ($insurants as $insurant): ?>
+         <?php echo "<td style='text-align: center;'>".$insurant['series_number']."</td>"; ?>
+         <?php echo "<td>".$insurant['issuedBy']."</td>"; ?>
+         <?php echo "<td>".$insurant['dateIssue']."</td></tr>"; ?>
+       <?php endforeach; ?>
+      </thead>
+    </table>
+    <label>Адрес регистрации</label>
+    <table id="" class="table table-bordered table-striped">
+      <thead>
+       <tr>
+        <th>Город или населенный пункт</th>
+        <th>Улица</th>
+        <th style='text-align: center;'>Дом</th>
+        <th style='text-align: center;'>Квартира</th>
+       </tr>
+       <?php foreach ($insurants as $insurant): ?>
+         <?php echo "<td>".$insurant['insurant_city_reg']."</td>"; ?>
+         <?php echo "<td>".$insurant['insurant_street_reg']."</td>"; ?>
+         <?php echo "<td style='text-align: center;'>".$insurant['insurant_house_reg']."</td>"; ?>
+         <?php echo "<td style='text-align: center;'>".$insurant['insurant_apartment_reg']."</td></tr>"; ?>
+       <?php endforeach; ?>
+      </thead>
+    </table>
+    <label>Адрес проживания</label>
+    <table id="" class="table table-bordered table-striped">
+      <thead>
+       <tr>
+        <th>Город или населенный пункт</th>
+        <th>Улица</th>
+        <th style='text-align: center;'>Дом</th>
+        <th style='text-align: center;'>Квартира</th>
+       </tr>
+       <?php foreach ($insurants as $insurant): ?>
+         <?php echo "<td>".$insurant['insurant_city_res']."</td>"; ?>
+         <?php echo "<td>".$insurant['insurant_street_res']."</td>"; ?>
+         <?php echo "<td style='text-align: center;'>".$insurant['insurant_house_res']."</td>"; ?>
+         <?php echo "<td style='text-align: center;'>".$insurant['insurant_apartment_res']."</td></tr>"; ?>
+       <?php endforeach; ?>
+      </thead>
+    </table>
+    <hr>
+    <h1 align="center">Страховщики</h1>
+    <br>
+    <table id="" class="table table-bordered table-striped">
+      <thead>
+       <tr>
+        <th style='text-align: center;'>ID</th>
+        <th>Наименование</th>
+        <th>ИНН</th>
+        <th>БИК</th>
+        <th>Расч. счет</th>
+        <th>Корр. счет</th>
+        <th style='text-align: center;'>Страховая сумма</th>
+       </tr>
+       <?php foreach ($insurers as $insurer): ?>
+         <?php echo "<td style='text-align: center;'>".$insurer['insurer_id']."</td>"; ?>
+         <?php echo "<td>".$insurer['appellation']."</td>"; ?>
+         <?php echo "<td>".$insurer['TIN']."</td>"; ?>
+         <?php echo "<td>".$insurer['BIC']."</td>"; ?>
+         <?php echo "<td>".$insurer['checkAccount']."</td>"; ?>
+         <?php echo "<td>".$insurer['corAccount']."</td>"; ?>
+         <?php echo "<td style='text-align: center;'>".$insurer['sumIns']."</td></tr>"; ?>
+       <?php endforeach; ?>
+      </thead>
+    </table>
+    <label>Адрес местоположения</label>
+    <table id="" class="table table-bordered table-striped">
+      <thead>
+       <tr>
+        <th>Почтовый индекс</th>
+        <th>Город или населенный пункт</th>
+        <th>Улица</th>
+        <th style='text-align: center;'>Дом</th>
+       </tr>
+       <?php foreach ($insurers as $insurer): ?>
+         <?php echo "<td>".$insurer['postcode']."</td>"; ?>
+         <?php echo "<td>".$insurer['insurer_city']."</td>"; ?>
+         <?php echo "<td>".$insurer['insurer_street']."</td>"; ?>
+         <?php echo "<td>".$insurer['insurer_house']."</td></tr>"; ?>
+       <?php endforeach; ?>
+      </thead>
+    </table>
    </div>
   </div>
  </body>
 </html>
->
