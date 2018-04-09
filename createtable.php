@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
       $stmt->execute();
       $data = $stmt->fetchAll();
       if(count($data) == 0) {
-        $sql_insert ="INSERT INTO insurant (appellation, TIN, checkAccount, BIC, corAccount, postcode, insurer_city, insurer_street, insurer_house, sumIns
+        $sql_insert ="INSERT INTO insureres (appellation, TIN, checkAccount, BIC, corAccount, postcode, insurer_city, insurer_street, insurer_house, sumIns
         ) VALUES (?,?,?,?,?,?,?,?,?,?)";
       $stmt = $conn->prepare($sql_insert);
       $stmt->bindValue(1, $appellation);
