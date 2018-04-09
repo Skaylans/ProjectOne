@@ -28,7 +28,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = "CREATE TABLE insurer(
         insurer_id INT NOT NULL IDENTITY(1,1),
-        PRIMARY KEY(id),
+        PRIMARY KEY(insurer_id),
         appellation VARCHAR(50),
         TIN VARCHAR(50),
         checkAccount VARCHAR(50),
