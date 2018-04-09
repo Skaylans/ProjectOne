@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  </body>
+</html>
+
+
 <?
 
 $dsn = "sqlsrv:server = tcp:safelife.database.windows.net,1433; Database = Insurance";
