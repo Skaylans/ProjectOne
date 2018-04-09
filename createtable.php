@@ -71,7 +71,7 @@ try {
           insurant_apartment_res VARCHAR(10),
           series_number VARCHAR(15),
           issuedBy VARCHAR(100),
-          dateIssue VARCHAR(10)
+          dateIssue VARCHAR(10),
           id INT)";
           $conn->query($sql);
           echo "<h3>Таблица Страхователя создана.</h3>";
