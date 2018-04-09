@@ -11,12 +11,12 @@ $pass = "Qwerty123456";
 try {
     $conn = new PDO($dsn, $login, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")) or die ( 'error' );
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$sql_select = "SELECT * FROM insureres";
+$sql_select = "SELECT * FROM insur";
     $stmt = $conn->query($sql_select);
     $stmt->execute();
     $date = $stmt->fetchAll();
     if(count($date) == 0) {
-        $insert = "INSERT INTO insureres (appellation, TIN, checkAccount, BIC, corAccount, postcode, insurer_city, insurer_street, insurer_house, sumIns) VALUES
+        $insert = "INSERT INTO insur (appellation, TIN, checkAccount, BIC, corAccount, postcode, insurer_city, insurer_street, insurer_house, sumIns) VALUES
         ('Тинькофф Страхование', '5117059685', '40072758430020034122453', '044327295', '301419569000000006573', '140400', 'РФ, Саратовская область, г. Саратов', 'Московская 18', '3', '500000.00'),
         ('БИНБАНК', '5037455674', '40072758430043603412347', '044327367', '301419569000000007313', '144404', 'РФ, Саратовская область, г. Саратов', 'Советская 22', '5', '300000.00'),
         ('Росгосстрах', '5063755980', '40072758450060341367300', '101631367', '11079569330000006780', '410313', 'РФ, Саратовская область, г. Саратов', 'Гагарина 10', '16', '400000.00'),
