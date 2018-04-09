@@ -42,6 +42,22 @@ body {
   margin-top: 9px;
 }
 
+.btnOne {
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  float: right;
+  padding: 5px 9px;
+  border-radius: 0 0 0 70px;
+  margin-top: -55px;
+  font-size: 1.2em;
+  background-color: rgba(23, 230, 37, 0.19);
+  text-shadow: #e6ba00 0 0 2px;
+  border-bottom: 4px solid rgba(17, 209, 36, 0.38);
+  color: white;
+  font-family: 'Roboto Slab', serif;
+}
+
 .btn {
   width: 300px;
   height: 50px;
