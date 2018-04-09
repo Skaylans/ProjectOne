@@ -36,39 +36,39 @@ if (isset($_POST['submit'])) {
   }
   ?>
 
-
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
+     <form action="createtable.php" method="POST" name="prime">
     <div class="form-group">
       <label for="">Наименование</label>
-      <input type="text" class="form-control"  id="to_appellation" name="to_appellation" style="width: 650px;" >
+      <input type="text" class="form-control"  id="to_appellation" name="to_appellation" style="width: 650px;">
     </div>
 
     <legend><h3>Адрес местоположения</h3></legend>
 
     <div class="form-group">
       <label for="">Почтовый индекс</label>
-      <input type="text" class="form-control"  id="to_index" name="to_index"style="width: 650px;" >
+      <input type="text" class="form-control"  id="to_index" name="to_index"style="width: 650px;">
     </div>
 
     <div class="form-group">
       <label for="">Город или населенный пункт</label>
-      <input type="text" class="form-control"  id="to_city" name="to_city"style="width: 650px;" >
+      <input type="text" class="form-control"  id="to_city" name="to_city"style="width: 650px;">
     </div>
 
     <div class="form-group">
       <label for="">Улица</label>
-      <input type="text" class="form-control"  id="to_street" name="to_street"style="width: 650px;" >
+      <input type="text" class="form-control"  id="to_street" name="to_street"style="width: 650px;">
     </div>
 
     <div class="form-group">
       <label for="">Дом</label>
-      <input type="text" class="form-control"  id="to_house" name="to_house" style="width: 120px; text-align: center; padding-left: 10px;" >
+      <input type="text" class="form-control"  id="to_house" name="to_house" style="width: 120px; text-align: center; padding-left: 10px;">
     </div>
 
     <hr>
@@ -80,12 +80,12 @@ if (isset($_POST['submit'])) {
 
     <div class="form-group" style="float: left; margin-left: 50px;">
       <label for="">ИНН</label>
-      <input type="text" class="form-control" id="to_inn" name="to_inn" style="font-size: 18px;"  >
+      <input type="text" class="form-control" id="to_inn" name="to_inn" style="font-size: 18px;">
     </div>
 
     <div class="form-group" style="float: left;">
       <label for="">БИК</label>
-      <input type="text" class="form-control"  id="to_bic" name="to_bic" style="font-size: 18px;" >
+      <input type="text" class="form-control"  id="to_bic" name="to_bic" style="font-size: 18px;">
     </div>
 
     <div class="form-group" style="float: left; margin-left: 50px;" >
@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
     </div>
 
 <input type="submit" name="submit" value="submit">
-    
+        </form>
   </body>
 </html>
 
