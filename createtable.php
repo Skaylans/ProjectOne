@@ -1,8 +1,7 @@
 <?php
 
 try {
-    $conn = new PDO($dsn, $login, $pass);
-    $conn->exec("set names utf8");
+    $conn = new PDO($dsn, $login, $pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $sql = "CREATE TABLE insur(
           insurer_id INT NOT NULL IDENTITY(1,1),
