@@ -23,6 +23,7 @@ catch (PDOException $e) {
     die(print_r($e));
 }*/
 
+/*
 
 try {
     $conn = new PDO($dsn, $login, $pass);
@@ -48,6 +49,24 @@ try {
           series_number VARCHAR(15),
           issuedBy VARCHAR(100),
           dateIssue VARCHAR(10))";
+          $conn->query($sql);
+          echo "<h3>Таблица Страхователя создана.</h3>";
+}
+catch (PDOException $e) {
+    print("Ошибка подключения к SQL Server.");
+    die(print_r($e));
+}
+*/
+try {
+    $conn = new PDO($dsn, $login, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "CREATE TABLE insured(
+          insured_id INT NOT NULL IDENTITY(1,1),
+          PRIMARY KEY(insured_id),
+          insured_first_name VARCHAR(50),
+          insured_last_name VARCHAR(50),
+          insured_middle_name VARCHAR(50),
+          insured_birthdate VARCHAR(10))";
           $conn->query($sql);
           echo "<h3>Таблица Страхователя создана.</h3>";
 }
