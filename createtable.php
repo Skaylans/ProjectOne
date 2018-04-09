@@ -34,6 +34,7 @@ if (isset($_POST['submit'])) {
 
       echo '<div style = "color: blue; text-align: center;">Страховщик записан в базу!</div><hr>';
   }
+}
   ?>
 
 <!DOCTYPE html>
