@@ -10,7 +10,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $sql = "CREATE TABLE contract(
           contract_id INT NOT NULL IDENTITY(1,1),
-          PRIMARY KEY(id),
+          PRIMARY KEY(contract_id),
           insurant_id INT,
           insurer_id INT,
           insured_id INT,
