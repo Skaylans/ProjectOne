@@ -8,6 +8,7 @@
     </span>
   </p>
 </div>
+<a href="\myDogovor.php" title="Мои договоры"><div class="btnOne">Мои договоры</div></a>
 <?php endif; ?>
 
 
@@ -21,7 +22,7 @@
   <body>
     <div class="prime-box">
       <div id="reg_auth">
-        <a href="\choice.php" title="Страхование жизни"><div class="btn">Страхование</div></a>
+        <a href="\choice.php" title="Оформить полис"><div class="btn">Страхование</div></a>
         <a href="\exit.php" title="Выйти из личного кабинета"><div class="btn">Выйти</div></a>
        </div>
     </div>
