@@ -3,6 +3,23 @@
 
 <?php
 
+$dsn = "sqlsrv:server = tcp:safelife.database.windows.net,1433; Database = Insurance";
+$login = "Romanow";
+$pass = "Qwerty123456";
+
+try {
+      $conn = new PDO($dsn, $username, $password);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql1 = "DELETE FROM insurer";
+        $conn->query($sql1);
+    echo '<div style = "color: red; text-align: center;">Таблица удалена!</div><hr>';
+      }
+    }
+    catch (PDOException $e) {
+      print("Ошибка подключения к SQL Server.");
+      die(print_r($e));
+    }
+/*
 try {
     $conn = new PDO($dsn, $login, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -26,7 +43,7 @@ catch (PDOException $e) {
     print("Ошибка подключения к SQL Server.");
     die(print_r($e));
 }
-
+*/
 ?> 
 
 
