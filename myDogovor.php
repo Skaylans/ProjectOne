@@ -32,15 +32,15 @@
 
 $user_name = $_SESSION['logged_user'];
 
-$sql_select_usersID = "SELECT user_id FROM users WHERE login = '$user_name'";
+$sql_select_usersID = "SELECT id FROM users WHERE login = '$user_name'";
 $stmt = $conn->query($sql_select_usersID);
 $stmt->execute();
 $users = $stmt->fetchAll();
 foreach ($users as $user) {
-  $userID .= $user['user_id'];
+  $userID .= $user['id'];
 }
 
-$sql_select_insurantID = "SELECT insurant_id, insurant_email FROM insurant WHERE user_id = '$userID'";
+$sql_select_insurantID = "SELECT insurant_id, insurant_email FROM insurants WHERE user_id = '$userID'";
 $stmt = $conn->query($sql_select_insurantID);
 $stmt->execute();
 $insurants = $stmt->fetchAll();
