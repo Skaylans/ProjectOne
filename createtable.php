@@ -11,7 +11,7 @@
 
 <?
 
-$dsn = "sqlsrv:server = tcp:safelife.database.windows.net,1433; Database = Insurance; charset=UTF8";
+$dsn = "sqlsrv:server = tcp:safelife.database.windows.net,1433; Database = Insurance;";
 $login = "Romanow";
 $pass = "Qwerty123456";
 
@@ -120,7 +120,7 @@ INSERT INTO `insurers` (`insurer_id`, `appellation`, `TIN`, `checkAccount`, `BIC
 /**/
 
 try {
-    $conn = new PDO($dsn, $login, $pass);
+    $conn = new PDO($dsn, $login, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql_select = "SELECT * FROM insureres";
     $stmt = $conn->query($sql_select);
