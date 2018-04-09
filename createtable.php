@@ -26,7 +26,7 @@ catch (PDOException $e) {
 try {
     $conn = new PDO($dsn, $login, $pass);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "CREATE TABLE insurer(
+    $sql = "CREATE TABLE insurers(
         insurer_id INT NOT NULL IDENTITY(1,1),
         PRIMARY KEY(insurer_id),
         appellation VARCHAR(50),
