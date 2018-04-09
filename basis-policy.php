@@ -4,7 +4,7 @@ require_once('db.php');
 $proto = '';
 $user_name = $_SESSION['logged_user'];
 
-  $query = "SELECT appellation FROM insurers ORDER BY appellation";
+  $query = "SELECT appellation FROM insureres ORDER BY appellation";
   $stmt = $conn->prepare($query);
   $stmt->execute();
   $insurers = $stmt->fetchAll();
@@ -46,7 +46,7 @@ if (isset($_POST['payment'])) {
       $stmt->execute();
       $data1 = $stmt->fetchAll();
       if(count($data1) == 0) {
-        $sql_insert_insurant ="INSERT INTO insurant (
+        $sql_insert_insurant ="INSERT INTO insurants (
           phone_number,
           insurant_email,
           insurant_last_name,
